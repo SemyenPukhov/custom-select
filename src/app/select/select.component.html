@@ -1,0 +1,22 @@
+<div class="select-container">
+  <div
+    class="select-title"
+    [ngClass]="{ focused: isOpen }"
+    (click)="toggleOpen()"
+  >
+    {{ selectedOption ? selectedOption.label : defaultPlaceholder }}
+  </div>
+  <div class="select-options" [ngClass]="{ 'hidden-options': !isOpen }">
+    <div
+      class="select-option"
+      [ngClass]="{
+        'selected-option':
+          selectedOption && option.value === selectedOption.value
+      }"
+      *ngFor="let option of options"
+      (click)="optionSelect(option)"
+    >
+      {{ option.label }}
+    </div>
+  </div>
+</div>
